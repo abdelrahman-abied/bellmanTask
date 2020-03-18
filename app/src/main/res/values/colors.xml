@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#FFFEFE</color>
+    <color name="bellmanBackground">#5F1854</color>
+    <color name="bellmanIconColor">#ffd101</color>
+    <color name="frameLayoutColor" >#97FFFFFF</color>
+
+<color name="viewAllBtnTransparent">@android:color/transparent</color>
+</resources>

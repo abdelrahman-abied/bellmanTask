@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".view.ui.MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/big_header"
+            android:theme="@style/Theme.Design.NoActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="true"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                <LinearLayout
+                    android:id="@+id/title_appbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:clickable="false"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title_on_appbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="       You are in"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/subtitle_on_appbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/location_white"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:singleLine="true"
+                        android:text="Cairo-Egypt"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:padding="3dp"
+                        app:srcCompat="@drawable/filter_inside_search" />
+
+                    <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:hint="البحث"
+                        android:inputType="textVisiblePassword|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/darker_gray" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:padding="3dp"
+
+                        app:srcCompat="@drawable/location_search_icon" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/hotspotsViewAll_btn"
+                            android:drawableLeft="@drawable/hotspot_icon"
+                            android:gravity="center_vertical"
+                            android:text="Hotspot"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="18sp" />
+
+                        <Button
+
+                            android:id="@+id/hotspotsViewAll_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/colorAccent"
+                            android:drawableRight="@drawable/view_all_icon"
+                            android:text="View All"
+                            android:textColor="@color/bellmanBackground" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/hostspotsList_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fadingEdge="none"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        android:scrollbars="horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/eventsViewAll_btn"
+                            android:drawableLeft="@drawable/events_icon"
+                            android:gravity="center_vertical"
+                            android:text="Event"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="18sp" />
+
+                        <Button
+
+                            android:id="@+id/eventsViewAll_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/colorAccent"
+                            android:drawableRight="@drawable/view_all_icon"
+                            android:text="View All"
+                            android:textColor="@color/bellmanBackground" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/eventsList_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fadingEdge="none"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        android:scrollbars="none" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/attractionsViewAll_btn"
+                            android:drawableLeft="@drawable/attarctions_icon"
+                            android:gravity="center_vertical"
+                            android:text="Attractions"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="18sp" />
+
+                        <Button
+
+                            android:id="@+id/attractionsViewAll_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:backgroundTint="@color/colorAccent"
+                            android:drawableRight="@drawable/view_all_icon"
+                            android:text="View All"
+                            android:textColor="@color/bellmanBackground" />
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/attractionsList_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fadingEdge="none"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include layout="@layout/fab_layout" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bellmanFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bellman_bottom"
+            app:backgroundTint="@color/bellmanBackground"
+            app:fabCustomSize="60dp"
+            app:maxImageSize="50dp"
+            app:layout_anchor="@id/bar"
+            app:tint="@color/bellmanIconColor" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bottom_bar_curvy"
+            app:backgroundTint="@android:color/white"
+            app:fabAlignmentMode="center"
+
+            app:fabCradleMargin="15dp"
+            app:fabCradleRoundedCornerRadius="20dp"
+            app:fabCradleVerticalOffset="5dp"
+            app:hideOnScroll="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:weightSum="15">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profile_ImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="0dp"
+                        android:src="@drawable/profile_grey_bottom_icon" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/notification_ImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="0dp"
+                        android:src="@drawable/notification_grey_bottom_icon" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/search_ImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="0dp"
+                        android:src="@drawable/search_grey_bottom_icon" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/home_ImgV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="0dp"
+                        android:src="@drawable/home_bottom_icon" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
